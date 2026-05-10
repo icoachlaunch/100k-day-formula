@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The $100K Day Formula™ — Coach Launch</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --crimson: #db0063;
+      --crimson-dark: #a8004b;
+      --crimson-glow: rgba(219,0,99,0.18);
+      --black: #0d0d0d;
+      --dark: #111111;
+      --dark2: #1a1a1a;
+      --dark3: #222222;
+      --dark4: #2b2b2b;
+      --grey: #555555;
+      --light-grey: #cccccc;
+      --white: #ffffff;
+      --off-white: #f0f0f0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--dark);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ─── GRID TEXTURE BACKGROUND ─── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(219,0,99,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(219,0,99,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ─── LAYOUT ─── */
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 0 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      padding: 80px 0 72px;
+      text-align: center;
+      border-bottom: 1px solid var(--dark4);
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 320px;
+      height: 2px;
+      background: var(--crimson);
+    }
+
+    .hero-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      background: rgba(219,0,99,0.1);
+      border: 1px solid rgba(219,0,99,0.3);
+      padding: 6px 16px;
+      border-radius: 3px;
+      margin-bottom: 28px;
+    }
+
+    .hero-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 36px;
+    }
+
+    .logo-icon {
+      width: 48px;
+      height: 48px;
+      background: var(--crimson);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .logo-icon svg { width: 26px; height: 26px; }
+
+    .logo-text {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .logo-text span { color: var(--crimson); }
+
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 58px);
+      font-weight: 900;
+      line-height: 1.08;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--crimson);
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 2vw, 18px);
+      font-weight: 500;
+      color: var(--light-grey);
+      max-width: 620px;
+      margin: 0 auto 40px;
+      line-height: 1.7;
+    }
+
+    .hero-tagline {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--off-white);
+      border-left: 3px solid var(--crimson);
+      padding: 8px 20px;
+      background: var(--dark3);
+      text-align: left;
+      font-style: italic;
+    }
+
+    /* ─── SECTION HEADERS ─── */
+    .section {
+      padding: 72px 0;
+      border-bottom: 1px solid var(--dark4);
+    }
+
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(26px, 4vw, 38px);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .section-title em {
+      font-style: normal;
+      color: var(--crimson);
+    }
+
+    .section-desc {
+      font-size: 15px;
+      color: var(--light-grey);
+      font-weight: 400;
+      max-width: 680px;
+      line-height: 1.75;
+      margin-bottom: 48px;
+    }
+
+    /* ─── OVERVIEW CARDS ─── */
+    .overview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--dark4);
+      border: 1px solid var(--dark4);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 48px;
+    }
+
+    .overview-card {
+      background: var(--dark2);
+      padding: 32px 28px;
+    }
+
+    .overview-card .oc-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 10px;
+    }
+
+    .overview-card .oc-title {
+      font-size: 20px;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .overview-card p {
+      font-size: 14px;
+      color: var(--light-grey);
+      line-height: 1.7;
+    }
+
+    .formula-quote {
+      background: var(--dark3);
+      border-left: 4px solid var(--crimson);
+      padding: 20px 28px;
+      font-size: 15px;
+      font-style: italic;
+      color: var(--off-white);
+      font-weight: 500;
+      line-height: 1.7;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* ─── PILLARS ─── */
+    .pillar-block {
+      margin-bottom: 56px;
+    }
+
+    .pillar-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 28px;
+      padding: 20px 24px;
+      background: var(--dark3);
+      border: 1px solid var(--dark4);
+      border-left: 4px solid var(--crimson);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .pillar-num {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--crimson);
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .pillar-title-wrap {}
+
+    .pillar-name {
+      font-size: 20px;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .pillar-tagline {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--light-grey);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 2px;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2px;
+      background: var(--dark4);
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--dark4);
+    }
+
+    .step-card {
+      background: var(--dark2);
+      padding: 24px 22px;
+      position: relative;
+      transition: background 0.2s;
+    }
+
+    .step-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--dark4);
+      transition: background 0.2s;
+    }
+
+    .step-card:hover { background: #1f1f1f; }
+    .step-card:hover::before { background: var(--crimson); }
+
+    .step-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 8px;
+    }
+
+    .step-name {
+      font-size: 17px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+
+    .step-quote {
+      font-size: 13px;
+      font-style: italic;
+      color: var(--light-grey);
+      line-height: 1.65;
+      padding-top: 12px;
+      border-top: 1px solid var(--dark4);
+    }
+
+    /* ─── PHASES ─── */
+    .phases-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .phase-row {
+      display: grid;
+      grid-template-columns: 180px 1fr;
+      background: var(--dark2);
+      border: 1px solid var(--dark4);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+
+    .phase-row:hover { border-color: var(--crimson); }
+
+    .phase-left {
+      background: var(--dark3);
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      border-right: 3px solid var(--crimson);
+    }
+
+    .phase-badge {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      margin-bottom: 6px;
+    }
+
+    .phase-name {
+      font-size: 18px;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.15;
+      margin-bottom: 4px;
+    }
+
+    .phase-days {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+    }
+
+    .phase-right {
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 20px;
+      align-items: start;
+    }
+
+    .phase-detail-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--grey);
+      margin-bottom: 6px;
+    }
+
+    .phase-detail-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--off-white);
+      line-height: 1.5;
+    }
+
+    .phase-goal {
+      grid-column: 1 / -1;
+      padding-top: 16px;
+      border-top: 1px solid var(--dark4);
+      font-size: 13px;
+      color: var(--light-grey);
+      line-height: 1.65;
+    }
+
+    .phase-goal strong {
+      color: var(--crimson);
+      font-weight: 700;
+    }
+
+    /* ─── QUICK REFERENCE TABLE ─── */
+    .ref-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      border: 1px solid var(--dark4);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .ref-table thead tr {
+      background: var(--dark3);
+    }
+
+    .ref-table th {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      padding: 14px 16px;
+      text-align: left;
+      border-bottom: 1px solid var(--dark4);
+    }
+
+    .ref-table td {
+      padding: 13px 16px;
+      border-bottom: 1px solid var(--dark4);
+      color: var(--light-grey);
+      vertical-align: top;
+      line-height: 1.6;
+    }
+
+    .ref-table tr:last-child td { border-bottom: none; }
+
+    .ref-table tbody tr { background: var(--dark2); transition: background 0.15s; }
+    .ref-table tbody tr:hover { background: #1f1f1f; }
+
+    .ref-table .pillar-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--crimson);
+      border: 1px solid rgba(219,0,99,0.35);
+      padding: 3px 8px;
+      border-radius: 2px;
+      white-space: nowrap;
+    }
+
+    .ref-table .step-bold {
+      font-weight: 700;
+      color: var(--white);
+      font-size: 13px;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--dark4);
+      border: 1px solid var(--dark4);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .testimonial-card {
+      background: var(--dark2);
+      padding: 28px 26px;
+    }
+
+    .testi-quote {
+      font-size: 14px;
+      font-style: italic;
+      color: var(--off-white);
+      line-height: 1.75;
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--dark4);
+    }
+
+    .testi-quote::before {
+      content: '"';
+      font-size: 40px;
+      line-height: 1;
+      color: var(--crimson);
+      font-style: normal;
+      font-weight: 900;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .testi-name {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .testi-role {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--grey);
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      padding: 52px 0;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .footer-logo-icon {
+      width: 36px;
+      height: 36px;
+      background: var(--crimson);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .footer-logo-icon svg { width: 20px; height: 20px; }
+
+    .footer-logo-text {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .footer-logo-text span { color: var(--crimson); }
+
+    .footer-url {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--grey);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: var(--dark4);
+      letter-spacing: 0.06em;
+    }
+
+    /* ─── DIVIDER ─── */
+    .crimson-divider {
+      width: 48px;
+      height: 3px;
+      background: var(--crimson);
+      margin: 20px 0 32px;
+    }
+
+    /* ─── PHASE PROGRESS BAR ─── */
+    .phase-progress {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 40px;
+    }
+
+    .pp-step {
+      flex: 1;
+      text-align: center;
+      position: relative;
+    }
+
+    .pp-step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 19px;
+      right: -1px;
+      width: calc(100% - 38px);
+      height: 2px;
+      background: var(--dark4);
+      z-index: 0;
+      left: calc(50% + 19px);
+    }
+
+    .pp-dot {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--dark3);
+      border: 2px solid var(--dark4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 10px;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--grey);
+      position: relative;
+      z-index: 1;
+      transition: all 0.2s;
+    }
+
+    .pp-step.active .pp-dot {
+      background: var(--crimson);
+      border-color: var(--crimson);
+      color: var(--white);
+    }
+
+    .pp-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .pp-step.active .pp-label { color: var(--white); }
+
+    /* ─── PYRAMID VISUAL ─── */
+    .pyramid-wrap {
+      display: flex;
+      justify-content: center;
+      margin: 48px 0;
+    }
+
+    .pyramid {
+      width: 100%;
+      max-width: 680px;
+    }
+
+    .pyramid-tier {
+      display: flex;
+      align-items: stretch;
+      margin-bottom: 3px;
+      transition: filter 0.2s;
+    }
+
+    .pyramid-tier:hover { filter: brightness(1.1); }
+
+    .pyramid-tier-label {
+      flex: 0 0 140px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 16px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--grey);
+    }
+
+    .pyramid-bar {
+      flex: 1;
+      padding: 14px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .pyramid-bar-title {
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--white);
+    }
+
+    .pyramid-bar-goal {
+      font-size: 12px;
+      font-weight: 700;
+      color: rgba(255,255,255,0.65);
+      text-align: right;
+    }
+
+    .tier-1 .pyramid-bar { background: #2a0018; border-left: 4px solid #6b0030; }
+    .tier-2 .pyramid-bar { background: #4a0028; border-left: 4px solid #9a0050; }
+    .tier-3 .pyramid-bar { background: #6e0038; border-left: 4px solid #b50055; }
+    .tier-4 .pyramid-bar { background: var(--crimson-dark); border-left: 4px solid var(--crimson); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 700px) {
+      .overview-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .phase-row { grid-template-columns: 1fr; }
+      .phase-left { border-right: none; border-bottom: 3px solid var(--crimson); }
+      .phase-right { grid-template-columns: 1fr 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .pyramid-tier-label { display: none; }
+    }
+
+    @media print {
+      body::before { display: none; }
+      .phase-row:hover, .step-card:hover, .ref-table tbody tr:hover { background: inherit; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════ HERO ══════════════ -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 6 Q5 18 13 21 Q21 18 21 6" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M13 21 L13 10 M10 13 L13 10 L16 13" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="logo-text">COACH<span>LAUNCH</span></div>
+    </div>
+    <div class="hero-eyebrow">The Complete System</div>
+    <h1>The <em>$100K Day</em><br/>Formula™</h1>
+    <p class="hero-sub">A unique 3-pillar, 9-step masterclass system that closes 5–8 clients every 28 days without one-on-one selling or events that don't convert.</p>
+    <div class="hero-tagline">"The Formula is the vehicle. The Pyramid is the route.<br/>You need both — but you build the vehicle, then follow the route."</div>
+  </div>
+</header>
+
+<!-- ══════════════ OVERVIEW ══════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">The System</div>
+    <h2 class="section-title">Two Components.<br/><em>One Destination.</em></h2>
+    <p class="section-desc">Everything you need to run a repeatable $100K day masterclass — the vehicle to build it and the route to follow it.</p>
+
+    <div class="overview-grid">
+      <div class="overview-card">
+        <div class="oc-label">Component 01</div>
+        <div class="oc-title">The $100K Day Formula™</div>
+        <p>The vehicle. A 3-pillar, 9-step system covering every tool, skill, and asset needed to run a repeatable $100K day masterclass. The Formula builds your offer, masters your close, and grows your audience.</p>
+      </div>
+      <div class="overview-card">
+        <div class="oc-label">Component 02</div>
+        <div class="oc-title">The $100K Day Accelerator™</div>
+        <p>The route. A 4-phase, 112-day journey that tells you when and how to use the Formula steps, in what order, and exactly how to know when you're ready to progress.</p>
+      </div>
+    </div>
+
+    <div class="formula-quote">
+      The whole system is fractal — every step can become a lead magnet, a piece of content, an email, or a standalone offer.
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ THE FORMULA ══════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Part 1</div>
+    <h2 class="section-title">The $100K Day<br/><em>Formula™</em></h2>
+    <p class="section-desc">3 pillars · 9 steps · One repeatable system. Each pillar solves a distinct problem. Each step delivers one tangible win.</p>
+    <div class="crimson-divider"></div>
+
+    <!-- PILLAR 1 -->
+    <div class="pillar-block">
+      <div class="pillar-header">
+        <div class="pillar-num">Pillar 01</div>
+        <div class="pillar-title-wrap">
+          <div class="pillar-name">Offer Engine</div>
+          <div class="pillar-tagline">Red Diamond Offers — Irresistible High-Ticket Offer</div>
+        </div>
+      </div>
+      <p style="font-size:14px;color:var(--light-grey);line-height:1.75;margin-bottom:24px;">Before a single ticket is sold or a slide is built, you need an offer the room can't say no to. Pillar 1 builds that from the ground up — the story, the system, and the seven layers of desirability that make it irresistible.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">Step 01</div>
+          <div class="step-name">$Million Story</div>
+          <div class="step-quote">"Craft a message so magnetic your ideal client feels like you are reading their mind — in 60 seconds or less."</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">Step 02</div>
+          <div class="step-name">Magic Formula</div>
+          <div class="step-quote">"Build a signature formula that makes you irreplaceable — and every competitor irrelevant — without dropping your price or bonus stacking."</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">Step 03</div>
+          <div class="step-name">7X Red Diamonds</div>
+          <div class="step-quote">"Engineer offers so desirable that the only logical answer from your audience is YES — and you can 2X, 3X, even 5X your price without impostor syndrome."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PILLAR 2 -->
+    <div class="pillar-block">
+      <div class="pillar-header">
+        <div class="pillar-num">Pillar 02</div>
+        <div class="pillar-title-wrap">
+          <div class="pillar-name">Money Engine</div>
+          <div class="pillar-tagline">Money Magnet Events — Close from the Virtual Stage</div>
+        </div>
+      </div>
+      <p style="font-size:14px;color:var(--light-grey);line-height:1.75;margin-bottom:24px;">This is where the money gets made — before, during, and after the event. Most coaches leave 40–60% of their revenue on the table because they have no system here. Pillar 2 closes that gap completely.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">Step 04</div>
+          <div class="step-name">The Sniper Close</div>
+          <div class="step-quote">"Deliver a closing sequence so precisely engineered your audience closes themselves — no pressure, no awkward silence, no objection handling required."</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">Step 05</div>
+          <div class="step-name">Cash Flow Engine</div>
+          <div class="step-quote">"Turn your event ticket registrations into instant cashflow and collect revenue before the event starts — self-liquidating the ad spend."</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">Step 06</div>
+          <div class="step-name">Genie X Converter</div>
+          <div class="step-quote">"Deploy a show-up, follow-up and nurture automation that turns warm leads into paying clients — and closes sales while you sleep."</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PILLAR 3 -->
+    <div class="pillar-block" style="margin-bottom:0;">
+      <div class="pillar-header">
+        <div class="pillar-num">Pillar 03</div>
+        <div class="pillar-title-wrap">
+          <div class="pillar-name">Client Engine</div>
+          <div class="pillar-tagline">The Enchanted Flywheel — Repeat Every 28 Days</div>
+        </div>
+      </div>
+      <p style="font-size:14px;color:var(--light-grey);line-height:1.75;margin-bottom:24px;">One $100K Day is a win. A repeatable $100K Day is a business. Pillar 3 builds the audience engine that keeps the room full — starting lean, scaling smart, compounding over time.</p>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-num">Step 07</div>
+          <div class="step-name">Goliath Content</div>
+          <div class="step-quote">"An AI-powered content flywheel that produces emails, social posts, scripts, ads and sales copy at scale — without burning hours on the content hamster wheel."</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">Step 08</div>
+          <div class="step-name">Pixie Dust Social</div>
+          <div class="step-quote">"100X your circle of influence, amplify your authority and rapidly grow your audience with a hungry crowd ready to buy — without posting on social till your thumbs bleed."</div>
+        </div>
+        <div class="step-card">
+          <div class="step-num">Step 09</div>
+          <div class="step-name">Dragon Fire Ads</div>
+          <div class="step-quote">"Build a lean, self-liquidating ad machine that fills every $100K Day event with premium buyers consistently — without the tech headaches, expensive agencies, or audiences that never buy."</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ QUICK REFERENCE ══════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Quick Reference</div>
+    <h2 class="section-title">The Full Formula<br/><em>At a Glance</em></h2>
+    <p class="section-desc" style="margin-bottom:32px;">All 9 steps, their pillar, and the outcome each one delivers.</p>
+
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Pillar</th>
+          <th>Step</th>
+          <th>Outcome</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--grey);font-weight:700;">01</td>
+          <td><span class="pillar-tag">Offer Engine</span></td>
+          <td class="step-bold">$Million Story</td>
+          <td>Craft a message so magnetic your ideal client feels like you are reading their mind — in 60 seconds or less.</td>
+        </tr>
+        <tr>
+          <td style="color:var(--grey);font-weight:700;">02</td>
+          <td><span class="pillar-tag">Offer Engine</span></td>
+          <td class="step-bold">Magic Formula</td>
+          <td>Build a signature formula that makes you irreplaceable — and every competitor irrelevant — without dropping your price or bonus stacking.</td>
+        </tr>
+        <tr>
+          <td style="color:var(--grey);font-weight:700;">03</td>
+          <td><span class="pillar-tag">Offer Engine</span></td>
+          <td class="step-bold">7X Red Diamonds</td>
+          <td>Engineer offers so desirable that the only logical answer from your audience is YES — and you can 2X, 3X, even 5X your price without impostor syndrome.</td>
+        </tr>
+        <tr>
+          <td style="color:var(--grey);font-weight:700;">04</td>
+          <td><span class="pillar-tag">Money Engine</span></td>
+          <td class="step-bold">The Sniper Close</td>
+          <td>Deliver a closing sequence so precisely engineered your audience closes themselves — no pressure, no awkward silence, no objection handling required.</td>
+        </tr>
+        <tr>
+          <td style="color:var(--grey);font-weight:700;">05</td>
+          <td><span class="pillar-tag">Money Engine</span></td>
+          <td class="step-bold">Cash Flow Engine</td>
+          <td>Turn your event ticket registrations into instant cashflow and collect revenue before the event starts — self-liquidating the ad spend.</td>
+        </tr>
+        <tr>
+          <td style="color:var(--grey);font-weight:700;">06</td>
+          <td><span class="pillar-tag">Money Engine</span></td>
+          <td class="step-bold">Genie X Converter</td>
+          <td>Deploy a show-up, follow-up and nurture automation that turns warm leads into paying clients — and closes sales while you sleep.</td>
+        </tr>
+        <tr>
+          <td style="color:var(--grey);font-weight:700;">07</td>
+          <td><span class="pillar-tag">Client Engine</span></td>
+          <td class="step-bold">Goliath Content</td>
+          <td>An AI-powered content flywheel that produces emails, social posts, scripts, ads and sales copy at scale — without burning hours on the content hamster wheel.</td>
+        </tr>
+        <tr>
+          <td style="color:var(--grey);font-weight:700;">08</td>
+          <td><span class="pillar-tag">Client Engine</span></td>
+          <td class="step-bold">Pixie Dust Social</td>
+          <td>100X your circle of influence, amplify your authority and rapidly grow your audience with a hungry crowd ready to buy — without posting on social till your thumbs bleed.</td>
+        </tr>
+        <tr>
+          <td style="color:var(--grey);font-weight:700;">09</td>
+          <td><span class="pillar-tag">Client Engine</span></td>
+          <td class="step-bold">Dragon Fire Ads</td>
+          <td>Build a lean, self-liquidating ad machine that fills every $100K Day event with premium buyers consistently — without the tech headaches, expensive agencies, or audiences that never buy.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ══════════════ PROFIT PYRAMID ══════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Part 2</div>
+    <h2 class="section-title">The $100K Day<br/><em>Profit Pyramid™</em></h2>
+    <p class="section-desc">4 phases · 112 days · One destination: closing 5–8 clients every 28 days with a repeatable masterclass. The deeper the immersion, the higher the conversion. You don't start at Phase 4 — you earn your way there.</p>
+    <div class="crimson-divider"></div>
+
+    <!-- Phase progression -->
+    <div class="phase-progress">
+      <div class="pp-step active">
+        <div class="pp-dot">1</div>
+        <div class="pp-label">Launch</div>
+      </div>
+      <div class="pp-step active">
+        <div class="pp-dot">2</div>
+        <div class="pp-label">Execute</div>
+      </div>
+      <div class="pp-step active">
+        <div class="pp-dot">3</div>
+        <div class="pp-label">Growth</div>
+      </div>
+      <div class="pp-step active">
+        <div class="pp-dot">4</div>
+        <div class="pp-label">Mastery</div>
+      </div>
+    </div>
+
+    <!-- Phases -->
+    <div class="phases-stack">
+
+      <!-- Phase 1 -->
+      <div class="phase-row">
+        <div class="phase-left">
+          <div class="phase-badge">Phase 01 · Days 1–28</div>
+          <div class="phase-name">LAUNCH</div>
+          <div class="phase-days">Message Breakthrough</div>
+        </div>
+        <div class="phase-right">
+          <div>
+            <div class="phase-detail-label">Event Format</div>
+            <div class="phase-detail-value">Breakthrough Party<br/><span style="color:var(--grey);font-size:12px;">Short · High-energy · Free</span></div>
+          </div>
+          <div>
+            <div class="phase-detail-label">Ticket + Upgrades</div>
+            <div class="phase-detail-value">Free + Survey on thank you page</div>
+          </div>
+          <div>
+            <div class="phase-detail-label">Your CTA</div>
+            <div class="phase-detail-value">Validation only<br/><span style="color:var(--grey);font-size:12px;">No offer yet</span></div>
+          </div>
+          <div class="phase-goal">
+            <strong>Goal: First 1–5 paying clients · Validates: Your message.</strong> Before making a single offer, you need to know your message is working. Run events, collect data, and iterate until the message is dialled in.
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 2 -->
+      <div class="phase-row">
+        <div class="phase-left">
+          <div class="phase-badge">Phase 02 · Days 29–56</div>
+          <div class="phase-name">EXECUTE</div>
+          <div class="phase-days">Offer Validator</div>
+        </div>
+        <div class="phase-right">
+          <div>
+            <div class="phase-detail-label">Event Format</div>
+            <div class="phase-detail-value">$1 Masterclass<br/><span style="color:var(--grey);font-size:12px;">90–120 min · Virtual</span></div>
+          </div>
+          <div>
+            <div class="phase-detail-label">Ticket + Upgrades</div>
+            <div class="phase-detail-value">$1 + VIP upsell on confirmation page</div>
+          </div>
+          <div>
+            <div class="phase-detail-label">Your CTA</div>
+            <div class="phase-detail-value">Free Discovery Call<br/><span style="color:var(--grey);font-size:12px;">Beta Offer — $997</span></div>
+          </div>
+          <div class="phase-goal">
+            <strong>Goal: First $10,000/month · Validates: Your offer.</strong> Run a $1 Masterclass, pitch a beta version of your offer, and close your first paying clients. Collect strong testimonials to sharpen delivery before Phase 3.
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 3 -->
+      <div class="phase-row">
+        <div class="phase-left">
+          <div class="phase-badge">Phase 03 · Days 57–84</div>
+          <div class="phase-name">GROWTH</div>
+          <div class="phase-days">First $25K Day</div>
+        </div>
+        <div class="phase-right">
+          <div>
+            <div class="phase-detail-label">Event Format</div>
+            <div class="phase-detail-value">$27 Masterclass<br/><span style="color:var(--grey);font-size:12px;">180–240 min · Virtual</span></div>
+          </div>
+          <div>
+            <div class="phase-detail-label">Ticket + Upgrades</div>
+            <div class="phase-detail-value">$27 + workbook bump + $97 VIP on thank you page</div>
+          </div>
+          <div>
+            <div class="phase-detail-label">Your CTA</div>
+            <div class="phase-detail-value">Paid Strategy Session<br/><span style="color:var(--grey);font-size:12px;">Full Offer — $5K+</span></div>
+          </div>
+          <div class="phase-goal">
+            <strong>Goal: First $25K day · Validates: Your pitch.</strong> Deploy the Sniper Pitch in a longer, deeper masterclass. Close high-ticket from the stage without a sales call. Use the longer format to build the trust that used to take weeks.
+          </div>
+        </div>
+      </div>
+
+      <!-- Phase 4 -->
+      <div class="phase-row">
+        <div class="phase-left" style="background:rgba(219,0,99,0.08);border-right-color:var(--crimson);">
+          <div class="phase-badge">Phase 04 · Days 85–112</div>
+          <div class="phase-name" style="color:var(--crimson);">MASTERY</div>
+          <div class="phase-days">The $100K Day</div>
+        </div>
+        <div class="phase-right">
+          <div>
+            <div class="phase-detail-label">Event Format</div>
+            <div class="phase-detail-value">Multi-Day Virtual Event<br/><span style="color:var(--grey);font-size:12px;">60–180 min/day</span></div>
+          </div>
+          <div>
+            <div class="phase-detail-label">Ticket + Upgrades</div>
+            <div class="phase-detail-value">$97 + 2 bumps + 2-option VIP on thank you page</div>
+          </div>
+          <div>
+            <div class="phase-detail-label">Your CTA</div>
+            <div class="phase-detail-value">Deposit Close — $997<br/><span style="color:var(--grey);font-size:12px;">Full Offer — $10K+</span></div>
+          </div>
+          <div class="phase-goal">
+            <strong>Goal: First $100K day + the system to repeat it · Validates: Scale.</strong> Run a Multi-Day Event, deploy the Deposit Close, and install the Enchanted Flywheel so the whole thing repeats every 28 days automatically.
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ RESULTS ══════════════ -->
+<section class="section">
+  <div class="container">
+    <div class="section-label">Client Results</div>
+    <h2 class="section-title">Real Coaches.<br/><em>Real Numbers.</em></h2>
+    <p class="section-desc" style="margin-bottom:36px;">These aren't outliers. These are coaches who followed the system.</p>
+
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testi-quote">It's been 8 weeks and I've closed 2 clients at $25K each and I'm just getting started.</div>
+        <div class="testi-name">Guy Bouchard</div>
+        <div class="testi-role">Coach helping real estate investors with multifamily apartments</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testi-quote">In just 7 weeks I've already closed $28,000 in clients. By my calculation I'll make $680K by the end of the year.</div>
+        <div class="testi-name">Vincent Holthouse</div>
+        <div class="testi-role">Coach helping real estate investors with cashflow properties</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testi-quote">I just closed a client on a $50K offer — and this wasn't even from a masterclass. It came from a research call after my Breakthrough Party. I've only been at this for 3 months.</div>
+        <div class="testi-name">Angie Roars</div>
+        <div class="testi-role">Coach helping people stand out from the crowd</div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testi-quote">Our last masterclass drove 10 people to a live in-person event at $7,500 each — $75K from just 10 people. At the live event, upsells totalled $144,000.</div>
+        <div class="testi-name">Melanie Warner</div>
+        <div class="testi-role">Coach helping people make money from books</div>
+      </div>
+    </div>
+
+    <!-- Extra stat highlight -->
+    <div style="margin-top:2px;background:var(--dark3);border:1px solid var(--dark4);border-left:4px solid var(--crimson);padding:24px 28px;display:flex;align-items:center;gap:24px;border-radius:0 4px 4px 0;">
+      <div style="font-size:36px;font-weight:900;color:var(--crimson);white-space:nowrap;">$100K+</div>
+      <div>
+        <div style="font-size:13px;font-weight:700;color:var(--white);margin-bottom:4px;">Net Income in a Single Year</div>
+        <div style="font-size:13px;color:var(--light-grey);">"I just passed $100K in net income this year — and now I'm on my way to $250K." — <em>Melanie Levasiure, coach helping mums build online businesses</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ FOOTER ══════════════ -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-logo">
+      <div class="footer-logo-icon">
+        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 6 Q5 18 13 21 Q21 18 21 6" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+          <path d="M13 21 L13 10 M10 13 L13 10 L16 13" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="footer-logo-text">COACH<span>LAUNCH</span></div>
+    </div>
+    <div class="footer-url">coachlaunch.com</div>
+    <div style="width:40px;height:2px;background:var(--crimson);margin:16px auto;"></div>
+    <div class="footer-copy">© 2026 Coach Launch · The $100K Day Formula™ · All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
