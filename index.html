@@ -93,31 +93,13 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 14px;
       margin-bottom: 36px;
     }
 
-    .logo-icon {
-      width: 48px;
-      height: 48px;
-      background: var(--crimson);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
+    .hero-logo img {
+      height: 64px;
+      width: auto;
     }
-
-    .logo-icon svg { width: 26px; height: 26px; }
-
-    .logo-text {
-      font-size: 22px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .logo-text span { color: var(--crimson); }
 
     .hero h1 {
       font-size: clamp(36px, 6vw, 58px);
@@ -555,30 +537,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 12px;
       margin-bottom: 16px;
     }
 
-    .footer-logo-icon {
-      width: 36px;
-      height: 36px;
-      background: var(--crimson);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    .footer-logo img {
+      height: 40px;
+      width: auto;
+      opacity: 0.85;
     }
-
-    .footer-logo-icon svg { width: 20px; height: 20px; }
-
-    .footer-logo-text {
-      font-size: 16px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-    }
-
-    .footer-logo-text span { color: var(--crimson); }
 
     .footer-url {
       font-size: 13px;
@@ -748,13 +714,7 @@
 <header class="hero">
   <div class="container">
     <div class="hero-logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 6 Q5 18 13 21 Q21 18 21 6" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <path d="M13 21 L13 10 M10 13 L13 10 L16 13" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="logo-text">COACH<span>LAUNCH</span></div>
+      <img src="logo.png" alt="Coach Launch" />
     </div>
     <div class="hero-eyebrow">The Complete System</div>
     <h1>The <em>$100K Day</em><br/>Formula™</h1>
@@ -1146,10 +1106,14 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-logo">
-      <div class="footer-logo-icon">
-        <svg viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M5 6 Q5 18 13 21 Q21 18 21 6" stroke="white" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-          <path d="M13 21 L13 10 M10 13 L13 10 L16 13" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </div>
-      <div class="footer-logo-text">COACH<span>LAUNCH</span></d
+      <img src="logo.png" alt="Coach Launch" />
+    </div>
+    <div class="footer-url">coachlaunch.com</div>
+    <div style="width:40px;height:2px;background:var(--crimson);margin:16px auto;"></div>
+    <div class="footer-copy">© 2026 Coach Launch · The $100K Day Formula™ · All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
